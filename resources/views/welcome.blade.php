@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.info')
+    @include('layouts.error')
+
     <div class="container text-center " style="">
 
         <div>
             {{ $equipos->links() }}
+            <h1 >Puntos</h1>
 
         </div>
         {!! Form::open(['route' => 'anotar.store', 'method' => 'post'] ) !!}

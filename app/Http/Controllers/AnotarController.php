@@ -37,13 +37,14 @@ class AnotarController extends Controller
     public function store(Request $request)
     {
         $anotar = new Anotar;
-        dd(\Auth::user()->id);
+        //dd(\Auth::user()->id);
         $anotar->partido_id = $request->partido_id;
         $anotar->resutaldo_equipo_1=$request->equipo_1;
         $anotar->resutaldo_equipo_2=$request->equipo_2;
         $anotar->save();
-        return \Redirect::route('index')
-            ->with('info', 'Loteria fue realizada de forma correcta');
+        \Auth::logout();
+        return \Redirect::route('login')
+            ->with('info', 'Polla fue realizada de forma correcta');
        // dd($request->all());
     }
 
