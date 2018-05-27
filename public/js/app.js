@@ -43264,7 +43264,7 @@ var render = function() {
     this.counter != 0
       ? _c("span", [
           _c(
-            "button",
+            "p",
             {
               staticClass: "btn btn-danger",
               staticStyle: {
@@ -43295,7 +43295,13 @@ var render = function() {
         "text-align": "center",
         "font-size": "50px"
       },
-      attrs: { min: "0", max: "100", id: _vm.getProd, disabled: "" },
+      attrs: {
+        name: _vm.getProd,
+        min: "0",
+        max: "100",
+        id: _vm.getProd,
+        readonly: ""
+      },
       domProps: { value: _vm.counter },
       on: {
         input: function($event) {
@@ -43310,7 +43316,7 @@ var render = function() {
     this.counter != 10
       ? _c("span", [
           _c(
-            "button",
+            "p",
             {
               staticClass: "btn btn-success",
               staticStyle: {

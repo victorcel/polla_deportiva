@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminEquiposController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminPartidosController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,35 +25,30 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "equipos";
+			$this->table = "partidos";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Pais","name"=>"pais"];
-			$this->col[] = ["label"=>"Bandera","name"=>"bandera","image"=>true];
-			$this->col[] = ["label"=>"Estado","name"=>"estado"];
+			$this->col[] = ["label"=>"Partido","name"=>"(select CONCAT((select pais from equipos where id=equipo_1), ' - ',(select pais from equipos where id=equipo_2)) from pollas where id=partido_id) as partido"];
+			$this->col[] = ["label"=>"Resutaldo Equipo 1","name"=>"resutaldo_equipo_1"];
+			$this->col[] = ["label"=>"Resutaldo Equipo 2","name"=>"resutaldo_equipo_2"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Pais','name'=>'pais','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Bandera','name'=>'bandera','type'=>'upload','validation'=>'required|image|max:1000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Estado','name'=>'estado','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Activo;Inactivo'];
+
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Pais','name'=>'pais','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Bandera','name'=>'bandera','type'=>'upload','validation'=>'required|image|max:1000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Estado','name'=>'estado','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Activo,Inactivo'];
 			# OLD END FORM
 
 			/* 
 	        | ---------------------------------------------------------------------- 
 	        | Sub Module
 	        | ----------------------------------------------------------------------     
-			| @label          = Label of action 
+			| @label          = Label of action
 			| @path           = Path of sub module
 			| @foreign_key 	  = foreign key of sub table/module
 			| @button_color   = Bootstrap Class (primary,success,warning,danger)

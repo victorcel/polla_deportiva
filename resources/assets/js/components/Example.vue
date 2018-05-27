@@ -1,8 +1,8 @@
 <template>
     <div>
-        <span v-if="this.counter !=0"><button style="width:50px;height: 50px;text-align: center;font-size: 20px" class="btn btn-danger" v-on:click="descrementCounter">-</button> </span>
-        <input style="width:70px;height: 70px;text-align: center;font-size: 50px" min="0" max="100" v-model="counter" :id=getProd disabled>
-        <span v-if="this.counter !=10"><button style="width:50px;height: 50px;text-align: center;;font-size: 20px"  class="btn btn-success" v-on:click="incrementCounter">+</button></span>
+        <span v-if="this.counter !=0"><p style="width:50px;height: 50px;text-align: center;font-size: 20px" class="btn btn-danger" v-on:click="descrementCounter">-</p> </span>
+        <input :name=getProd style="width:70px;height: 70px;text-align: center;font-size: 50px" min="0" max="100" v-model="counter" :id=getProd readonly >
+        <span v-if="this.counter !=10"><p style="width:50px;height: 50px;text-align: center;;font-size: 20px"  class="btn btn-success" v-on:click="incrementCounter">+</p></span>
     </div>
 
 </template>

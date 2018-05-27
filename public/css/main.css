@@ -57,12 +57,30 @@ ul.redes li a{
 	height: 100px;
 	width: 100px;
 }
+#padre {
+	/*background: yellow;*/
+	/*height: 70px;*/
+	/*IMPORTANTE*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+#hijo {
+	position: relative;
+	max-width: 300px;
+	width: 100%;
+}
+
 #products {
-position: absolute;
+	border: 5px solid orange;
+position: relative;
 max-width: 100%;
 width: 100%;
 }
 img {
+	border-radius: 40%;
 width: 100%;
 max-width: 100%;
 height: auto;

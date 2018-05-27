@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminEquiposController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminPollasController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,28 +25,32 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "equipos";
+			$this->table = "pollas";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Pais","name"=>"pais"];
-			$this->col[] = ["label"=>"Bandera","name"=>"bandera","image"=>true];
+			$this->col[] = ["label"=>"Equipo 1","name"=>"equipo_1","join"=>"equipos,pais"];
+			$this->col[] = ["label"=>"Equipo 1","name"=>"(select bandera from equipos where id=equipo_1) as bandera_1","image"=>true];
 			$this->col[] = ["label"=>"Estado","name"=>"estado"];
+			$this->col[] = ["label"=>"Equipo 2","name"=>"equipo_2","join"=>"equipos,pais"];
+			$this->col[] = ["label"=>"Equipo 2","name"=>"(select bandera from equipos where id=equipo_2) as bandera_2","image"=>true];
+			$this->col[] = ["label"=>"Fecha Del Partido","name"=>"fecha_partido"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Pais','name'=>'pais','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Bandera','name'=>'bandera','type'=>'upload','validation'=>'required|image|max:1000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Equipo 1','name'=>'equipo_1','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'equipos,pais'];
+			$this->form[] = ['label'=>'Equipo 2','name'=>'equipo_2','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'equipos,pais'];
 			$this->form[] = ['label'=>'Estado','name'=>'estado','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Activo;Inactivo'];
+			$this->form[] = ['label'=>'Fecha Del Partido','name'=>'fecha_partido','type'=>'datetime','validation'=>'required','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Pais','name'=>'pais','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Bandera','name'=>'bandera','type'=>'upload','validation'=>'required|image|max:1000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Estado','name'=>'estado','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Activo,Inactivo'];
+			//$this->form[] = ['label'=>'Equipo 1','name'=>'equipo_1','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'equipos,pais'];
+			//$this->form[] = ['label'=>'Equipo 2','name'=>'equipo_2','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'equipos,pais'];
+			//$this->form[] = ['label'=>'Estado','name'=>'estado','type'=>'select','validation'=>'required|min:1|max:255','width'=>'col-sm-10','dataenum'=>'Activo;Inactivo'];
 			# OLD END FORM
 
 			/* 

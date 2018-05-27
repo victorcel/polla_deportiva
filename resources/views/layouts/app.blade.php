@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 </head>
-<body>
+<body style="background-image: url('{{ asset('storage/ruleta.jpg')}}');background-color: #aecc2b;background-position: center center; background-repeat: no-repeat;background-attachment: fixed; background-size: cover">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

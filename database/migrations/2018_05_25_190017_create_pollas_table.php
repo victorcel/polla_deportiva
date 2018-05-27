@@ -15,11 +15,15 @@ class CreatePollasTable extends Migration
     {
         Schema::create('pollas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('equipo_1');
-            $table->string('equipo_2');
-            $table->unsignedInteger('equipo_id');
-            $table->foreign('equipo_id')->references('id')->on('equipos');
-            $table->enum('estado', ['Activo', 'Incativo']);
+//            $table->unsignedInteger('cliente_id');
+//            $table->foreign('cliente_id')->references('id')->on('users');
+            $table->unsignedInteger('equipo_1');
+            $table->foreign('equipo_1')->references('id')->on('equipos');
+            $table->unsignedInteger('equipo_2');
+            $table->foreign('equipo_2')->references('id')->on('equipos');
+            $table->enum('estado', ['Activo', 'Inactivo']);
+            $table->dateTime('fecha_partido');
+
             $table->timestamps();
         });
     }
