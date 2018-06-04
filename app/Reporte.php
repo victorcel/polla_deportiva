@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Anotar extends Model
+class Reporte extends Model
 {
-    protected $table = 'partidos';
-
+    protected $table = 'reportes';
 }

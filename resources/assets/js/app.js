@@ -18,5 +18,49 @@ window.Vue = require('vue');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data() {
+        return {
+            mensaje: [],
+            lector: [],
+            cantidad: 0,
+            slug:''
+        };
+
+    },
+    computed: {
+        getCedula() {
+            return this.mensaje.concat().join('')
+        },
+        getDirConfir(){
+            return "cart/confir/"+this.slug
+        },
+        getDirAdd(){
+            return "cart/add/"+this.slug
+        }
+
+    },
+    methods: {
+        getLector() {
+            // alert('Funciona ' + this.lector);
+            $('#edit').modal('show');
+            //return this.mensaje.concat().join('')
+        },
+        borrarCedula() {
+            this.lector = []
+        },
+        borrarTarjeta() {
+            this.mensaje = []
+        },
+        sumarCantidad() {
+            this.cantidad += 1;
+            this.$emit('increment')
+        },
+        restarCantidad() {
+            this.cantidad -= 1;
+        },
+        getSlug($dato) {
+            this.slug = $dato;
+        }
+    }
 });

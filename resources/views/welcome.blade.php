@@ -1,21 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.info')
-    @include('layouts.error')
+
 
     <div class="container text-center " style="">
-
+        @include('layouts.info')
+        @include('layouts.error')
+        {{--@include('layouts.message')--}}
         <div>
             {{ $equipos->links() }}
-            <h1 >Puntos</h1>
-
+            {{--{{ $info }}--}}
         </div>
-        {!! Form::open(['route' => 'anotar.store', 'method' => 'post'] ) !!}
+        {!! Form::open(['route' => 'ticket.store', 'method' => 'post'] ) !!}
         <div id="padre">
-
             @foreach($equipos as $equipo)
                 <input type="hidden" name="partido_id" value="{{ $equipo->id }}"/>
+                <input type="hidden" name="slug" value="{{$equipo->equipo_1}} -- {{$equipo->equipo_2}}">
+                {{--<input type="hidden" name="equipo_1" value="$equipo->equipo_1">--}}
+                {{--<input type="hidden" name="equipo_2" value="$equipo->equipo_2">--}}
                 <div id="hijo">
                     <div class="product white-panel" style="height: 456px !important;">
                         <h3>{{$equipo->equipo_1}}</h3>
@@ -42,10 +44,12 @@
 
         </div>
         @for ($i = 1; $i < 24; $i++)
-           <br>
+            <br>
         @endfor
-        {!! Form::submit('ANOTAR', ['class' => 'btn btn-success btn-lg pull-center','style'=>'width:100px;height: 70px;text-align: center']) !!}
-        {!! Form::close() !!}
+        @if(count($equipos)>0)
+            {!! Form::submit('ANOTAR', ['class' => 'btn btn-success btn-lg pull-center','style'=>'width:100px;height: 70px;text-align: center']) !!}
+            {!! Form::close() !!}
+        @endif
     </div>
 
 @endsection

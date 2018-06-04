@@ -23,7 +23,6 @@ class CreatePollasTable extends Migration
             $table->foreign('equipo_2')->references('id')->on('equipos');
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->dateTime('fecha_partido');
-
             $table->timestamps();
         });
     }

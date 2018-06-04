@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartidosTable extends Migration
+class CreateReportesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreatePartidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('partidos', function (Blueprint $table) {
+        Schema::create('reportes', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('resutaldo_equipo_1');
-            $table->unsignedInteger('resutaldo_equipo_2');
-            $table->unsignedInteger('partido_id');
-            $table->foreign('partido_id')->references('id')->on('pollas');
+            $table->unsignedInteger('puntos');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('reporte_id');
-            $table->foreign('reporte_id')->references('id')->on('reportes');
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class CreatePartidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partidos');
+        Schema::dropIfExists('reportes');
     }
 }

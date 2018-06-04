@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->unsignedInteger('puntos');
             $table->boolean('active')->default(true);
             $table->text('address')->nullable();
             $table->string('password');
